@@ -36,7 +36,6 @@ menu = [whamlet|
 
 footer :: Widget
 footer = [whamlet|
-    <nav .navbar .navbar-inverse .navbar-static-bottom>
       <div .container-fluid>
         <p .navbar-text .navbar-right>Sharebooks 2017. Todos os direitos reservados.&nbsp;</p>
 |]

@@ -1,8 +1,12 @@
 ^{menu}
 <main>
-    <div .row>
-        <div .col-md-12>
-            <form action=@{CadUserR} method=post enctype=#{enctype}>
-                ^{widget}
-                <input type="submit" value="Cadastrar">
-^{footer}
+    <div .container-fluid>
+        <div .row>
+            <div .col-md-4>
+                <form action=@{CadUserR} method=post enctype=#{enctype}>
+                    ^{widget}
+                    <input type="submit" value="Cadastrar">
+
+<footer>
+    <nav .navbar .navbar-inverse .navbar-fixed-bottom>
+        ^{footer}

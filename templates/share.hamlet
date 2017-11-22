@@ -40,5 +40,7 @@
         <a>
             Novo cadastro
 
+
 <footer>
-    ^{footer}
+    <nav .navbar .navbar-inverse .navbar-static-bottom>
+        ^{footer}
