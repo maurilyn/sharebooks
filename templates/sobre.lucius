@@ -1,0 +1,28 @@
+body{
+    padding-top: 70px;
+}
+
+.jumbotron{
+    background: url(@{StaticR img_banner_jpg});
+    background-size: 100%;
+    background-attachment: fixed
+    padding-bottom: 30%;
+}
+
+.jumbotron h1{
+    color: #fff;
+    margin: 0;
+    padding: 15% 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    font-size: 70px;
+    font-weight: normal;
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+}
+
+h3{
+    text-align: center;
+}

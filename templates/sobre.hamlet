@@ -1,0 +1,42 @@
+^{menu}
+<main>
+    <div .container-fluid>
+        <div .row>
+            <div .col-md-12>
+                <div .jumbotron>
+                    <h1 .sobre>
+                        Troque. Empreste. Compartilhe!
+        
+        <div .row>
+            <div .col-md-12>
+                <h2>
+                    O que é o ShareBooks?
+                <p>
+                    O Sharebooks é uma plataforma voltada para transações de livros desenvolvida para o projeto de conclusão de curso (TCC) da turma de Sistemas para Internet do 1º semestre de 2015.
+
+        <div .row>
+            <div .col-md-12>
+                <h2>
+                    Quem somos?
+        
+        <div .row>
+            <div .col-md-4>
+                <h3>
+                    Brenda Cenzi
+            <div .col-md-4>
+                <h3>
+                    Maurilyn Júnior
+            <div .col-md-4>
+                <h3>
+                    Stephany Tenório
+                    
+        <div .row>
+            <div .col-md-12>
+                <h2>
+                    A ideia
+                <p>
+                    Em seu plano principal, tem como objetivo auxiliar as pessoas na troca, empréstimo e doação de livros. Além de promover eventos com mesmos ideais e também incentivar o uso e a leitura de histórias.
+                    
+                    
+<footer>
+    ^{footer}

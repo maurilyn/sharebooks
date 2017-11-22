@@ -1,0 +1,44 @@
+^{menu}
+<main>
+    <div .container-fluid>
+        <div .row>
+            <div .col-md-12>
+                <div .jumbotron>
+                    <h1 .tit>
+                        Compartilhando histórias
+        <div .row>
+            <div .col-md-4>
+                <div .thumbnail>
+                    <img .ico src=@{StaticR img_emprestimo_png}>
+                    <div .caption>
+                        <h3>
+                            Busque livros.
+            
+            <div .col-md-4>
+                <div .thumbnail>
+                    <img .ico src=@{StaticR img_doacao_png}>
+                    <div .caption>
+                        <h3>
+                            Ofereça livros.
+                
+            <div .col-md-4>
+                <div .thumbnail>
+                    <img .ico src=@{StaticR img_troca_png}>
+                    <div .caption>
+                        <h3>
+                            Ajude e seja ajudado.
+
+<div .login>
+    <h2>
+        Login
+    <p>Usuário:
+    <p>Senha:
+    <p>
+        <a>
+            Esqueci minha senha
+        <br>
+        <a>
+            Novo cadastro
+
+<footer>
+    ^{footer}

@@ -1,0 +1,12 @@
+$(document).mouseup(function (e) {
+    var div = $("#login");
+    if (!div.is(e.target) && div.has(e.target).length === 0) {
+        if (div.is(':visible')) {
+            div.toggle("slow");
+        }
+    }
+});
+
+function showlogin(){
+    $("#login").show("slow");
+}

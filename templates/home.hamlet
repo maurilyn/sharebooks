@@ -1,0 +1,12 @@
+<ul>
+    <li>
+        <a href=@{Pagina1R}>
+            Pag 1
+    <li>
+        <a href=@{Pagina2R}>
+            Pag 2
+    <li>
+        <a href=@{Pagina3R}>
+            Pag 3
+<div class="container">
+    ^{wid1}

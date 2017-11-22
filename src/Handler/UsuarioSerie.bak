@@ -1,0 +1,49 @@
+{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE TypeFamilies #-}
+module Handler.UsuarioSerie where
+
+import Import
+import Network.HTTP.Types.Status
+--import Database.Persist.Postgresql
+
+
+postAcompanharR :: SerieId -> UsuarioId -> Handler Value
+postAcompanharR serieid uid = do 
+    usrsid <- runDB $ insert (UsuarioSerie serieid uid)
+    sendStatusJSON created201 (object ["resp" .= (fromSqlKey usrsid)])
+
+third :: (a,b,c) -> c
+third (_,_,c) = c
+
+-- Entity Serie = Entity SerieId Serie
+getExpectadoresR :: SerieId -> Handler Value
+getExpectadoresR serieid = do 
+    lista <- runDB $ rawSql
+        ("SELECT ??, ??, ?? \
+        \FROM serie INNER JOIN usuario_serie \
+        \ON serie.id=usuario_serie.serieid INNER JOIN usuario \
+        \ON usuario_serie.usrid = usuario.id WHERE serie.id = " <> (pack $ show $ fromSqlKey serieid))
+        [] :: Handler [(Entity Serie, Entity UsuarioSerie, Entity Usuario)]
+    listaUsuario <- return $ map third lista -- Handler [(Entity Usuario)]
+    listaUsuarioSohUsuario <- return $ map entityVal listaUsuario
+    sendStatusJSON ok200 (object ["resp" .= listaUsuarioSohUsuario])
+
+getExpectadoresFR :: SerieId -> Handler Value
+getExpectadoresFR serieid = do 
+    listaEntityUsuarioSerie <- runDB $ selectList [UsuarioSerieSerieid ==. serieid] [] 
+    listaUsuarioSerie <- return $ map entityVal listaEntityUsuarioSerie
+    idsUsuario <- return $ map usuarioSerieUsrid listaUsuarioSerie
+    usuarios <- sequence $ map (\x -> runDB $ get404 x) idsUsuario 
+    sendStatusJSON ok200 (object ["resp" .= usuarios])
+
+
+
+
+
+
+
+
+

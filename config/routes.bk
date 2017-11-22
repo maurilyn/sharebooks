@@ -1,0 +1,14 @@
+
+/serie                      SerieR          POST
+/serie/#SerieId/consulta    ConsultaSerieR  GET
+/serie/consulta/todos       TodasSerieR     GET
+/serie/#SerieId/apagar      ApagarSerieR    DELETE
+/serie/#SerieId/alterar     AlterarSerieR   PUT
+/serie/#SerieId/alterar/#Text/nome  AlterarNomeR PATCH
+
+/usuario                    UsuarioR        POST
+/usuario/consulta/todos     TodosUsuariosR  GET
+
+/acompanhar/#SerieId/serie/#UsuarioId/usuario   AcompanharR     POST
+/acompanhar/#SerieId/todos                      ExpectadoresR   GET
+/acompanhar/#SerieId/todos/f                    ExpectadoresfR   GET

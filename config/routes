@@ -1,0 +1,16 @@
+/static StaticR Static appStatic
+
+/               HomeR       GET
+/p1             Pagina1R    GET
+/p2             Pagina2R    GET
+/p3             Pagina3R    GET
+/cor/#Text      ColorR      GET
+/head/#String   HeadR       GET
+/listar         ListarR     GET
+/serie/cadastrar    CadSerieR   GET POST
+/serie/#SerieId/perfil  PerfilSerieR    GET
+
+/share                          ShareR          GET
+/share/sobre                    SobreR          GET
+/share/usuario/cadastrar        CadUserR        GET POST
+/share/#UsuarioId/perfil        PerfilUserR     GET

@@ -1,0 +1,18 @@
+Serie json
+    nome    Text
+    genero  Text
+    qtTemp  Int
+    ano     Int
+    deriving Show
+
+UsuarioSerie
+    serieId SerieId
+    usuarioId UsuarioId
+    deriving Show
+
+Usuario json
+    nome    Text
+    cpf     Text
+    email   Text
+    UniqueField cpf email
+    deriving Show

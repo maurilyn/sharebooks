@@ -1,0 +1,32 @@
+body{
+    padding-top: 70px;
+}
+
+.navbar-static-bottom{
+    margin-bottom: 0px;
+}
+input{
+    border: 1px solid #dcdcdc;
+    font-size: 16px;
+    outline: 0;
+    transition: 1s border;
+    padding: 2%;
+}
+
+input:focus{
+    border: 1px solid #3da8ad
+}
+
+input[type="submit"]{
+    background-color: #3da8ad;
+    color: #fff;
+    cursor: pointer;
+    width: 104.8%;
+    margin-top: 6%;
+    padding: 3% 2%;
+    transition: 1s background-color;
+}
+
+input[type="submit"]:hover{
+    background-color: #16767a;
+}
