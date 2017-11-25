@@ -28,6 +28,11 @@
                         <h3>
                             Ajude e seja ajudado.
 
+<footer>
+    <nav .navbar .navbar-inverse .navbar-static-bottom>
+        <div .container-fluid>
+            <p .navbar-text .navbar-right>Sharebooks 2017. Todos os direitos reservados.&nbsp;</p>
+
 <div .login>
     <h2>
         Login
@@ -39,8 +44,3 @@
         <br>
         <a>
             Novo cadastro
-
-
-<footer>
-    <nav .navbar .navbar-inverse .navbar-static-bottom>
-        ^{footer}

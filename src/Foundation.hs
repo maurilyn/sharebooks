@@ -10,6 +10,7 @@ module Foundation where
 import Import.NoFoundation
 import Database.Persist.Sql (ConnectionPool, runSqlPool)
 import Yesod.Core.Types     (Logger)
+import qualified Prelude as P
 
 data App = App
     { appSettings    :: AppSettings
@@ -25,6 +26,18 @@ type Form a = Html -> MForm Handler (FormResult a, Widget)
 
 instance Yesod App where
     makeLogger = return . appLogger
+    authRoute _ = Just LoginR
+    isAuthorized ShareR _ = return Authorized
+    isAuthorized LoginR _ = return Authorized
+    isAuthorized CadUserR _ = return Authorized
+    isAuthorized _ _ = ehUsuario
+    
+ehUsuario :: Handler AuthResult
+ehUsuario = do 
+    sess <- lookupSession "_USR"
+    case sess of 
+        Nothing -> return AuthenticationRequired
+        Just _ -> return Authorized
 
 instance YesodPersist App where
     type YesodPersistBackend App = SqlBackend

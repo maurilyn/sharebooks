@@ -9,7 +9,8 @@ module Handler.Share where
 import  Import
 import  Text.Lucius
 import  Text.Julius
-import Database.Persist.Postgresql
+import  Database.Persist.Postgresql
+import qualified Prelude as P
 
 menu :: Widget
 menu = [whamlet|
@@ -25,23 +26,29 @@ menu = [whamlet|
             <img src=@{StaticR img_sharebooks_png} alt="Sharebooks" width="20%">
 
         <div .collapse .navbar-collapse id="bs-example-navbar-collapse-1">
-          <ul .nav .navbar-nav .navbar-right>
-            <li>
-              <a href=@{CadUserR}>
-                Cadastrar-se
-            <li>
-              <a onclick="showlogin()">
-                Entrar
-|]
-
-footer :: Widget
-footer = [whamlet|
-      <div .container-fluid>
-        <p .navbar-text .navbar-right>Sharebooks 2017. Todos os direitos reservados.&nbsp;</p>
+            <ul .nav .navbar-nav .navbar-left>
+                <li>
+                    <a>
+                        Perfil
+            <ul .nav .navbar-nav .navbar-right>
+                <li>
+                    <a href=@{CadUserR}>
+                        Cadastrar-se
+                    <form action=@{LogoutR}} method=post>
+                        <input type="submit" value="Logout">
+                <li>
+                    <a href=@{LoginR}>
+                        Login
+                
+                <li>
+                    <a onclick="showlogin()">
+                        Entrar
 |]
 
 getShareR :: Handler Html
 getShareR = do
+    sess <- lookupSession "_USR"
+    --talvezUsuario <- return $ fmap (P.read . unpack) sess :: Handler (Maybe Usuario)
     defaultLayout $ do
         setTitle . fromString $ "Sharebooks - Compartilhando histórias"
         addStylesheet $ StaticR css_bootstrap_css
@@ -70,45 +77,3 @@ getSobreR = do
         addStylesheet $ StaticR css_bootstrap_css
         toWidget $ $(luciusFile "templates/sobre.lucius")
         $(whamletFile "templates/sobre.hamlet")
-        
-formUser :: Form Usuario
-formUser = renderDivs $ Usuario
-        <$> areq emailField  "Email: " Nothing
-        <*> areq passwordField  "Senha: " Nothing
-        <*> areq textField  "Nome: " Nothing
-        <*> areq textField  "CPF: " Nothing
-        <*> areq textField  "Cidade: " Nothing
-        <*> areq textField  "Estado: " Nothing
-
-getCadUserR :: Handler Html
-getCadUserR = do 
-    (widget,enctype) <- generateFormPost formUser
-    defaultLayout $ do 
-        setTitle . fromString $ "Cadastre-se | Sharebooks - Compartilhando histórias"
-        addStylesheet $ StaticR css_bootstrap_css
-        toWidget $ $(luciusFile "templates/cadUser.lucius")
-        $(whamletFile "templates/cadUser.hamlet")
-
-postCadUserR :: Handler Html
-postCadUserR = do 
-    ((result,_),_) <- runFormPost formUser
-    case result of
-        FormSuccess usuario -> do 
-            usuarioid <- runDB $ insert usuario
-            redirect (PerfilUserR usuarioid)
-        _ -> redirect ShareR
-
-getPerfilUserR :: UsuarioId -> Handler Html
-getPerfilUserR usuarioid = do
-    usuario <- runDB $ get404 usuarioid
-    defaultLayout $ do
-        [whamlet|
-            <h1>
-                Nome: #{usuarioNome usuario}
-            <h2>
-                Email: #{usuarioEmail usuario}
-            <h2>
-                Cidade: #{usuarioCidade usuario}
-            <h2>
-                Estado: #{usuarioEstado usuario}
-        |]

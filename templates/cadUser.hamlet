@@ -3,10 +3,23 @@
     <div .container-fluid>
         <div .row>
             <div .col-md-4>
-                <form action=@{CadUserR} method=post enctype=#{enctype}>
+                <form action=@{CadUserR} method=post enctype=#{enctype} .form-horizontal>
                     ^{widget}
                     <input type="submit" value="Cadastrar">
 
 <footer>
     <nav .navbar .navbar-inverse .navbar-fixed-bottom>
-        ^{footer}
+        <div .container-fluid>
+            <p .navbar-text .navbar-right>Sharebooks 2017. Todos os direitos reservados.&nbsp;</p>
+
+<div .login>
+    <h2>
+        Login
+    <p>Usuário:
+    <p>Senha:
+    <p>
+        <a>
+            Esqueci minha senha
+        <br>
+        <a>
+            Novo cadastro
